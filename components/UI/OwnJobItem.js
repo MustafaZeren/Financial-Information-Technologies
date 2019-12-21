@@ -24,7 +24,7 @@ const OwnJobItem = (props) => {
                             color: 'white',
                             }
                         ]}
-                    style={{backgroundColor:props.bgColor,width:380,borderRadius:100}}>  
+                    style={{backgroundColor:props.bgColor,width:380,borderRadius:30}}>  
                         <View padding-20>
                             <Text text70 dark10>
                                 {props.description}
