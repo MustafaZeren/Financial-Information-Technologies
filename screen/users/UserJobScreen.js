@@ -6,7 +6,7 @@ import {HeaderButtons, Item} from 'react-navigation-header-buttons'
 import {useDispatch, useSelector} from 'react-redux';
 import OwnJobItem from '../../components/UI/OwnJobItem'
 import * as jobActions from '../../actions/jobActions'
-
+import Timer from '../../components/UI/Time'
 // create a component
 const UserJobScreen = (props) => {
 
@@ -57,7 +57,8 @@ const UserJobScreen = (props) => {
 
     return (
         <View style={styles.container}>
-            <FlatList style={{flex:1}} data={userOwnJobs} onRefresh={loadOwnJobs} refreshing={isRefreshing} keyExtractor={item => item.id} 
+        <View style={{flex:0.25}}><Timer></Timer></View>
+        <FlatList style={{flex:0.75}} data={userOwnJobs} onRefresh={loadOwnJobs} refreshing={isRefreshing} keyExtractor={item => item.id}  
                   renderItem={itemData => <OwnJobItem 
                                                         description={itemData.item.description} 
                                                         bgColor={itemData.item.bgColor}
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
 UserJobScreen.navigationOptions = (navData) => {
     return {
         headerTitle:"Your To-Do List",
-        headerRight:(<HeaderButtons HeaderButtonComponent={CustomHeaderButton} >
+        headerLeft:(<HeaderButtons HeaderButtonComponent={CustomHeaderButton} >
                           <Item title="menu" iconName="md-menu" onPress={() =>navData.navigation.toggleDrawer()} />
                     </HeaderButtons>)
     }
